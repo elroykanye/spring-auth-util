@@ -15,9 +15,17 @@
     <description>spring-auth-util</description>
     <properties>
         <java.version>11</java.version>
-        <kotlin.version>1.5.0</kotlin.version>
+        <kotlin.version>1.6.10</kotlin.version>
+        <io.jsonwebtoken.version>0.9.1</io.jsonwebtoken.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
     </properties>
+    <developers>
+        <developer>
+            <id>elroykanye</id>
+            <name>Elroy Kanye</name>
+            <email>elroykanye@gmail.com</email>
+        </developer>
+    </developers>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -95,6 +103,11 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${io.jsonwebtoken.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -102,7 +115,21 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <!-- remove this to run as application -->
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                    <!-- remove this to run as application -->
+                </executions>
+
                 <configuration>
+                    <!-- remove this to run as application -->
+                    <skip>true</skip>
+                    <!-- remove this to run as application -->
+
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -186,6 +213,8 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+
+
         </plugins>
     </build>
 
